@@ -1,10 +1,10 @@
-import Vue from "vue"
+import Vue from 'vue'
 
-import App from "../popup/app"
+import App from '../popup/app'
 
-import store from "../popup/store"
+import store from '../popup/store'
 
-import  "../styles/popup.scss"
+import  '../styles/popup.scss'
 
 new Vue({
     el: `#popup`,

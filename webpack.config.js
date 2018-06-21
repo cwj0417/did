@@ -48,9 +48,6 @@ const rules = [
         test: /\.js$/,
         exclude: /(node_modules)/,
         use: ["babel", "eslint"]
-    }, {
-        test: [/fontawesome-webfont\.svg/, /fontawesome-webfont\.eot/, /fontawesome-webfont\.ttf/, /fontawesome-webfont\.woff/, /fontawesome-webfont\.woff2/],
-        use: ["file?name=fonts/[name].[ext]"]
     }
 ];
 let config = {

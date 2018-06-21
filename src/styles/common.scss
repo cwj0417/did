@@ -1,0 +1,18 @@
+//layout
+*, :after, :before {
+  box-sizing: border-box;
+}
+body {
+  box-sizing: initial;
+  height: 400px;
+  width: 600px;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+  font-size: 14px;
+  overflow: hidden;
+  padding: 10px;
+}
+
+input:focus {
+  outline-width: 2px;
+  outline-color: #0f0;
+}

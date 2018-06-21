@@ -11,6 +11,7 @@
   "author": "jin",
   "license": "ISC",
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "lodash": "^4.17.2",
     "moment": "^2.18.1",
     "vue": "^2.3.3",
