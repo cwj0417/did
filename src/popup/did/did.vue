@@ -34,5 +34,8 @@
 <style lang='scss'>
     .did-wrap {
         display: flex;
+        span {
+            padding: 3px 0;
+        }
     }
 </style>

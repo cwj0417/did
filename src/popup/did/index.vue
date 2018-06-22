@@ -6,7 +6,7 @@
         </div>
         <div class="show-history" v-for="item of historys">
             <div class="date">
-                {{item.date}}
+                <Date>{{item.date}}</Date>
             </div>
             <div class="his-dids">
                 <did-item :value="did" v-for="(did, index) in item.dids" :key="index"></did-item>
@@ -16,10 +16,11 @@
 </template>
 <script type='text/ecmascript-6'>
     import DidItem from './did.vue'
+    import Date from './date.vue'
     import {today, history} from './api.js'
 
     export default {
-        components: {DidItem},
+        components: {DidItem, Date},
         data () {
             return {
                 input: '',
@@ -44,7 +45,7 @@
                         this.dids = dids
                         history.get()
                                 .then(items => {
-                                    this.historys = items
+                                    this.historys = items.reverse()
                                 })
                     })
         }
@@ -56,8 +57,10 @@
     }
     .show-history {
         display: flex;
+        .date {
+            padding: 3px;
+        }
         .his-dids {
-            display: flex;
             div {
                 margin-left: 10px;
             }

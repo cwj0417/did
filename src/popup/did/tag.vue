@@ -24,7 +24,8 @@
     .did-tag-item {
         color: #fff;
         border-radius: 3px;
-        padding: 3px;
         cursor: pointer;
+        padding: 0 3px !important;
+        margin: 3px 1px;
     }
 </style>
