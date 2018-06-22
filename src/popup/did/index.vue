@@ -1,8 +1,7 @@
 <template>
     <div>
-        <input class="input" placeholder="what you have did today?" v-model="input" autofocus @keypress.enter="add">
         <div class="today-dids">
-            <did-item :value="did" :editable="true" @delete="del(index)" v-for="(did, index) in dids" :key="index"></did-item>
+            <did-item :value="did" :editable="true" @modify="v => modify(v, index)" @delete="del(index)" v-for="(did, index) in dids" :key="index"></did-item>
         </div>
         <div class="show-history" v-for="item of historys">
             <div class="date">
@@ -29,13 +28,16 @@
             }
         },
         methods: {
-            add () {
-                this.dids.push(this.input)
-                this.input = ''
+            add (input) {
+                this.dids.push(input)
                 today.set(this.dids)
             },
             del (index) {
                 this.dids.splice(index, 1)
+                today.set(this.dids)
+            },
+            modify (v, index) {
+                this.$set(this.dids, index, v)
                 today.set(this.dids)
             }
         },
@@ -54,6 +56,11 @@
 <style lang='scss'>
     .input {
         width: 100%;
+    }
+    .today-dids {
+        padding: 2px;
+        border-bottom: 1px solid #aaa;
+        margin: 2px;
     }
     .show-history {
         display: flex;

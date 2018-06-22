@@ -38,6 +38,13 @@ export const today = {
     },
     set (dids) {
         return storage.set('today', {date: date28(), dids})
+    },
+    push (did) {
+        return this.get()
+            .then(res => {
+                res.push(did)
+                return this.set(res)
+            })
     }
 }
 

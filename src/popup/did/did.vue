@@ -1,10 +1,11 @@
 <template>
-    <div class="did-wrap">
-        <template v-for="chip of matches">
+    <div class="did-wrap" @dblclick="edit">
+        <i class="fa fa-close"  @click="$emit('delete')" v-if="editable"></i>
+        <template v-for="chip of matches" v-if="editing === false">
             <tag v-if="tagRE.test(chip)">{{chip.replace(tagRE, '$1')}}</tag>
             <span v-else>{{chip}}</span>
         </template>
-        <button @click="$emit('delete')" v-if="editable"><i class="fa fa-close"></i></button>
+        <input ref="input" v-if="editing === true" :value="value" @blur="editing = false" @keyup.esc="editing = false" @keyup.enter="$emit('modify', $event.target.value) && (editing = false)" >
     </div>
 </template>
 <script type='text/ecmascript-6'>
@@ -18,12 +19,21 @@
         data () {
             return {
                 parsed: '',
+                editing: false,
                 tagRE
+            }
+        },
+        methods: {
+            edit () {
+                if (this.editable) {
+                    this.editing = true
+                    this.$nextTick(() => this.$refs.input.focus())
+                }
             }
         },
         computed: {
             matches () {
-                return this.value.trim().match(splitRE)
+                return this.value && this.value.trim().match(splitRE)
             }
         },
         mounted () {
@@ -34,8 +44,21 @@
 <style lang='scss'>
     .did-wrap {
         display: flex;
+        i {
+            width: 26px;
+            font-size: 18px;
+            padding: 4px;
+            vertical-align: top;
+            text-align: center;
+            cursor: pointer;
+        }
         span {
             padding: 3px 0;
+        }
+        input {
+            padding: 0 6px;
+            font-size: 16px;
+            border: 1px solid #aaa;
         }
     }
 </style>

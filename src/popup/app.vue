@@ -1,15 +1,17 @@
 <template>
     <div>
         <div class="app-header">
-            <div class="ttl">
-                {{content}}
+            <div class="select-module">
+                <i class="fa fa-calendar" @mouseover="cur = 'Did'"></i>
+            </div>
+            <div class="public-input">
+                <input autofocus @mouseover="$event.target.focus()" @keyup.enter="add" v-model="input" :placeholder="cur === 'Did' ? '今天做了什么?' : '准备做些什么?'">
             </div>
             <div class="select-module">
-                <span @mouseover="cur = 'Did'">did</span>
-                <span @mouseover="cur = 'Todos'">todo</span>
+                <i class="fa fa-tasks" @mouseover="cur = 'Todos'"></i>
             </div>
         </div>
-        <component :is='cur'></component>
+        <component :is="cur" ref="comp"></component>
     </div>
 </template>
 <script type='text/ecmascript-6'>
@@ -20,37 +22,40 @@
         data () {
             return {
                 cur: 'Did',
-                content: ''
+                input: ''
             }
         },
         components: {Did, Todos},
-        mounted () {
-            const nextDay = _ => new Date().setHours(24, 0, 0)
-            const lastYear = _ => new Date(new Date().setMonth(0, 0)).setHours(24, 0, 0)
-            const nextYear = _ => new Date(new Date().setMonth(12, 1)).setHours(0, 0, 0)
-            const analyzeTTL = time => {
-                let h = Math.floor(time / 3600)
-                let m = Math.floor((time % 3600) / 60)
-                let s = Math.floor(time % 3600 % 60)
-                return {h, m, s}
+        methods: {
+            add () {
+                this.$refs.comp.add(this.input)
+                this.input = ''
             }
-            let secondToDay = (nextDay() - new Date()) / 1000
-            let {h, m} = analyzeTTL(secondToDay)
-            this.content = `time to next day: ${h}h ${m}m`
-            let year = new Date().getFullYear()
-            let per = (Date.now() - lastYear()) / (nextYear() - lastYear())
-            this.content += `, ${year} has passed ${(per * 100).toFixed(0)}%`
+        },
+        mounted () {
+
         }
     }
 </script>
 <style lang='scss'>
     .app-header {
         display: flex;
-        .ttl {
-            flex-grow: 1;
-        }
+        font-size: 30px;
+        height: 30px;
+        margin-bottom: 5px;
         .select-module {
-            width: 60px;
+            width: 30px;
+            font-size: 20px;
+            padding: 5px;
+        }
+        .public-input {
+            margin: 0 10px;
+            input {
+                font-size: 20px;
+                height: 30px;
+                text-align: center;
+                border: 0;
+            }
         }
     }
 </style>
