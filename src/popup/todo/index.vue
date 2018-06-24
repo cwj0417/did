@@ -26,7 +26,7 @@
         },
         methods: {
             add (input) {
-                this.todos.unshift({start: date28(), todo: input})
+                this.todos.push({start: date28(), todo: input})
                 todo.set(this.todos)
             },
             del (index) {

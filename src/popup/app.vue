@@ -28,8 +28,10 @@
         components: {Did, Todos},
         methods: {
             add () {
-                this.$refs.comp.add(this.input)
-                this.input = ''
+                if (this.input) {
+                    this.$refs.comp.add(this.input)
+                    this.input = ''
+                }
             }
         },
         mounted () {
