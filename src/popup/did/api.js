@@ -24,9 +24,12 @@ export const today = {
             .then(res => {
                 res = res || {}
                 if (res.date && res.date !== date28()) {
+                    this.set([])
+                    if (!res.dids.length) {
+                        return []
+                    }
                     // push to history
                     let tags = extractTags(res.dids)
-                    this.set([])
                     return history.push({...res, tags})
                         .then(_ => {
                             return []
