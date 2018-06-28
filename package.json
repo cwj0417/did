@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "font-awesome": "^4.7.0",
+    "gistore": "^0.1.1",
     "lodash": "^4.17.2",
     "moment": "^2.18.1",
     "vue": "^2.3.3",

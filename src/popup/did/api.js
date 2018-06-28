@@ -1,4 +1,5 @@
 import {storage} from '../../libs/bg.js'
+import gistore from '../../libs/gistore'
 
 function to10 (n) {
     return n > 10 ? n : '0' + n
@@ -32,6 +33,13 @@ export const today = {
                     let tags = extractTags(res.dids)
                     return history.push({...res, tags})
                         .then(_ => {
+                            gistore.check()
+                                .then(suc => {
+                                    storage.getAll()
+                                        .then(data => {
+                                            gistore.$api.backUp({[fileName]: data})
+                                        })
+                                })
                             return []
                         })
                 } else {
