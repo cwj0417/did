@@ -1,6 +1,8 @@
 import {storage} from '../../libs/bg.js'
 import gistore from '../../libs/gistore'
 
+const fileName = 'did-store.db'
+
 function to10 (n) {
     return n > 10 ? n : '0' + n
 }

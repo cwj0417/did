@@ -4,6 +4,7 @@
             <div v-if="hasGist">
                 <div v-if="hasId">
                     <span>gist id: {{hasId}}</span>
+                    <i style="cursor:pointer;" @click="hasId = false">X</i>
                     <button @click="sync">import from gist(将会丢失本地数据)</button>
                     <button @click="backup">export to gist(远程备份将被覆盖)</button>
                 </div>
@@ -84,6 +85,8 @@
                 gistore.$api.getList()
                         .then(res => {
                             this.list = res
+                        }, err => {
+                            console.log(err)
                         })
             },
             backup () {
