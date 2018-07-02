@@ -37,15 +37,15 @@ export const today = {
                         .then(_ => {
                             gistore.check()
                                 .then(suc => {
-                                    storage.getAll()
+                                    return storage.getAll()
                                         .then(data => {
                                             gistore.$api.backUp({[fileName]: data})
                                         })
                                 })
-                            return []
+                                .then(res => [], err => [])
                         })
                 } else {
-                    return res.dids
+                    return res.dids || []
                 }
             })
     },
