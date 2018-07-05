@@ -14,7 +14,8 @@ export const tagRE = /{{([^}}]*?)}}/g
 const extractTags = dids => {
     let tags = []
     for (let did of dids) {
-        for (let match of did.match(tagRE)) {
+        let matches = did.match(tagRE) || []
+        for (let match of matches) {
             tags.push(match.replace(tagRE, '$1'))
         }
     }
