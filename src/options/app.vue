@@ -16,7 +16,7 @@
             <ul class="gistList">
                 <li v-for="(item,index) in list" :key="index" :class="{active: hasId === item.id}">
                     id: {{item.id}}
-                    <a :href="item.html_url" target="_blank">{{Object.keys(item.files).join(',')}}</a>
+                    <a :href="item.html_url" target="_blank">{{item.description}}</a>
                 </li>
             </ul>
         </div>
