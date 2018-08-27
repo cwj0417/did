@@ -29,5 +29,9 @@
     }
 </script>
 <style lang='scss'>
-
+    .did-date {
+        width: 66px;
+        text-align: center;
+        display: inline-block;
+    }
 </style>

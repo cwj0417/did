@@ -43,7 +43,7 @@
 </script>
 <style lang='scss'>
     .did-wrap {
-        display: flex;
+        line-height: 26px;
         i {
             width: 26px;
             font-size: 18px;

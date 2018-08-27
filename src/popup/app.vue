@@ -5,7 +5,8 @@
                 <i class="fa fa-calendar" @mouseover="cur = 'Did'"></i>
             </div>
             <div class="public-input">
-                <input autofocus @mouseover="$event.target.focus()" @keyup.enter="add" v-model="input" :placeholder="cur === 'Did' ? '今天做了什么?' : '准备做些什么?'">
+                <input @keyup.enter="add" v-model="input"
+                       :placeholder="cur === 'Did' ? '今天做了什么?' : '准备做些什么?'">
             </div>
             <div class="select-module">
                 <i class="fa fa-tasks" @mouseover="cur = 'Todos'"></i>
@@ -52,11 +53,17 @@
         }
         .public-input {
             margin: 0 10px;
+            width: auto;
             input {
                 font-size: 20px;
                 height: 30px;
                 text-align: center;
                 border: 0;
+                transition: width .5s;
+                width: 190px;
+                &:focus {
+                    width: 510px;
+                }
             }
         }
     }
