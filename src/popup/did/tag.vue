@@ -4,21 +4,21 @@
     </span>
 </template>
 <script type='text/ecmascript-6'>
-    export default {
-        data () {
-            return {
-                tag: this.$slots.default[0].text
-            }
-        },
-        computed: {
-            tagInfo () {
-                return this.$store.state.tags
-            }
-        },
-        mounted () {
-            this.$store.dispatch('getTag', this.tag)
-        }
+  export default {
+    data () {
+      return {
+        tag: this.$slots.default[0].text
+      }
+    },
+    computed: {
+      tagInfo () {
+        return this.$store.state.tags
+      }
+    },
+    mounted () {
+      this.$store.dispatch('getTag', this.tag)
     }
+  }
 </script>
 <style lang='scss'>
     .did-tag-item {

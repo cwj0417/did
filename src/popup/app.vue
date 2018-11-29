@@ -16,29 +16,29 @@
     </div>
 </template>
 <script type='text/ecmascript-6'>
-    import Did from './did'
-    import Todos from './todo'
+  import Did from './did'
+  import Todos from './todo'
 
-    export default {
-        data () {
-            return {
-                cur: 'Did',
-                input: ''
-            }
-        },
-        components: {Did, Todos},
-        methods: {
-            add () {
-                if (this.input) {
-                    this.$refs.comp.add(this.input)
-                    this.input = ''
-                }
-            }
-        },
-        mounted () {
-
+  export default {
+    data () {
+      return {
+        cur: 'Did',
+        input: ''
+      }
+    },
+    components: {Did, Todos},
+    methods: {
+      add () {
+        if (this.input) {
+          this.$refs.comp.add(this.input)
+          this.input = ''
         }
+      }
+    },
+    mounted () {
+
     }
+  }
 </script>
 <style lang='scss'>
     .app-header {
