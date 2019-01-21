@@ -6,7 +6,7 @@
         </div>
         <div class="show-history" v-for="item of historys">
             <div class="date">
-                <Date>{{item.date}}</Date>
+                <Date :value="item.date"></Date>
             </div>
             <div class="his-dids">
                 <did-item :value="did" v-for="(did, index) in item.dids" :key="index"></did-item>

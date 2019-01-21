@@ -5,11 +5,7 @@
 </template>
 <script type='text/ecmascript-6'>
   export default {
-    data () {
-      return {
-        tag: this.$slots.default[0].text
-      }
-    },
+    props: ['tag'],
     computed: {
       tagInfo () {
         return this.$store.state.tags

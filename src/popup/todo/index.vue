@@ -2,7 +2,7 @@
     <div>
         <div class="todo-wrap">
             <div class="todo-item-wrap" v-for="(todo, index) in todos" :key="index">
-                <Date>{{todo.start}}</Date>
+                <Date :value="todo.start"></Date>
                 <i class="fa fa-check" @click="check(index)"></i>
                 <did-item @modify="v => modify(v, index)" @delete="del(index)" :value="todo.todo"
                           :editable="true"></did-item>
@@ -28,7 +28,7 @@
     },
     methods: {
       add (input) {
-        this.todos.push({start: date28(), todo: input})
+        this.todos.unshift({start: date28(), todo: input})
         todo.set(this.todos)
       },
       del (index) {
