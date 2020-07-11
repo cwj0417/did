@@ -4,7 +4,7 @@
             <did-item :value="did" :editable="true" @modify="v => modify(v, index)" @delete="del(index)"
                       v-for="(did, index) in dids" :key="index"></did-item>
         </div>
-        <div class="show-history" v-for="item of historys">
+        <div class="show-history" v-for="(item, index) of historys" :key="index">
             <div class="date">
                 <Date :value="item.date"></Date>
             </div>

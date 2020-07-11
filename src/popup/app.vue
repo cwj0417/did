@@ -5,7 +5,7 @@
                 <i class="fa fa-calendar" @mouseover="cur = 'Did'"></i>
             </div>
             <div class="public-input">
-                <input @keyup.enter="add" v-model="input"
+                <input @keydown="add" v-model="input"
                        :placeholder="cur === 'Did' ? '今天做了什么?' : '准备做些什么?'">
             </div>
             <div class="select-module">
@@ -28,8 +28,8 @@
     },
     components: {Did, Todos},
     methods: {
-      add () {
-        if (this.input) {
+      add (event) {
+        if (this.input && event.keyCode === 13 && !event.isComposing) {
           this.$refs.comp.add(this.input)
           this.input = ''
         }

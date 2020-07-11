@@ -1,6 +1,6 @@
 <template>
     <span class="did-date">
-        {{monthMap[parsedDate.getMonth()]}}/{{parsedDate.getDate()}}({{weekMap[parsedDate.getDay()]}})
+        {{parsedDate.getFullYear()}}/{{monthMap[parsedDate.getMonth()]}}/{{parsedDate.getDate()}}({{weekMap[parsedDate.getDay()]}})
     </span>
 </template>
 <script type='text/ecmascript-6'>
@@ -26,7 +26,7 @@
 </script>
 <style lang='scss'>
     .did-date {
-        width: 66px;
+        width: 100px;
         text-align: center;
         display: inline-block;
     }

@@ -1,8 +1,8 @@
 <template>
     <div class="did-wrap" @dblclick="edit">
         <i class="fa fa-close" @click="$emit('delete')" v-if="editable"></i>
-        <template v-for="chip of matches" v-if="editing === false">
-            <tag v-if="tagRE.test(chip)" :tag="chip.replace(tagRE, '$1')"></tag>
+        <template v-for="(chip, index) of matches">
+            <tag v-if="tagRE.test(chip) && editing === false" :key="index" :tag="chip.replace(tagRE, '$1')"></tag>
             <span v-else>{{chip}}</span>
         </template>
         <input ref="input" v-if="editing === true" :value="value" @blur="editing = false" @keyup.esc="editing = false"
