@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   entry: {
     opts:'./app/opts/src/index.js',
@@ -63,6 +64,7 @@ module.exports = {
       filename: './popup.html',
       chunks:['popup']
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new CleanWebpackPlugin(),
     ],
 };
