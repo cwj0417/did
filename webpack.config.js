@@ -1,7 +1,10 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
+const WebpackBar = require('webpackbar');
 module.exports = {
+  mode:'development',
   entry: {
     opts:'./app/opts/src/index.js',
     popup:'./app/popup/src/index.js'
@@ -43,6 +46,21 @@ module.exports = {
         use: 'vue-loader'
       },
       {
+        loader: 'thread-loader',
+        options: {
+          workers: 2 // 进程2个
+        }
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+            options: { minimize: true }
+          }
+        ]
+      },
+      {
         test: /\.(le|c)ss$/,
         use: [
           'style-loader',
@@ -63,6 +81,8 @@ module.exports = {
       filename: './popup.html',
       chunks:['popup']
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new WebpackBar()
     ],
 };
