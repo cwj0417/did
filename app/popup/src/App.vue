@@ -1,10 +1,10 @@
 <template>
     <div style="color:red" @click="handleChange">{{count}}</div>
 </template>
-<script>
+<script lang="ts">
 import { useStore } from 'vuex'
-import { computed } from 'vue'
-export default {
+import { computed, defineComponent} from 'vue'
+export default defineComponent({
     setup() {
         let store = useStore();
         const handleChange = ()=>{
@@ -15,7 +15,7 @@ export default {
             handleChange
         }
     }
-}
+})
 </script>
 <style >
 

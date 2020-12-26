@@ -4,15 +4,15 @@ const { VueLoaderPlugin } = require('vue-loader');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   entry: {
-    opts:'./app/opts/src/index.js',
-    popup:'./app/popup/src/index.js'
+    opts:'./app/opts/src/index.ts',
+    popup:'./app/popup/src/index.ts'
   },
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json','.ts','.tsx'],
     alias: {
       'vue': '@vue/runtime-dom'
     }
@@ -42,6 +42,14 @@ module.exports = {
       {
         test: /\.vue$/,
         use: 'vue-loader'
+      },
+      {
+        test: /\.(ts|tsx)?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        }
       },
       {
         test: /\.html$/,
